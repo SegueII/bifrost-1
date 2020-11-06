@@ -28,7 +28,7 @@ func main() {
 		return
 	}
 
-	// count.CountServiceTasks(client, participants)
+	count.CountServiceTasks(client, participants)
 	// count.CountRecordTasks(client, participants)
 	count.CountNFTTasks(client, participants)
 	// count.CountRandomTasks(client, participants)
