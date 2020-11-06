@@ -3,4 +3,5 @@ vendor
 .vscode
 .idea
 
+validators.json
 result.json

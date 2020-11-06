@@ -2,6 +2,7 @@ package count
 
 import (
 	"encoding/json"
+	"fmt"
 
 	"github.com/tidwall/gjson"
 
@@ -12,10 +13,15 @@ import (
 )
 
 func CountServiceTasks(client sdk.IRISHUBClient, participants []*biftypes.Participant) {
+	fmt.Println("count Service task 1 ...")
 	CountServiceTask1(client, participants)
+	fmt.Println("count Service task 2 and 3 ...")
 	CountServiceTask2And3(client, participants)
+	fmt.Println("count Service task 4 and 5 ...")
 	CountServiceTask4And5(client, participants)
+	fmt.Println("count Service task 6 ...")
 	CountServiceTask6(client, participants)
+	fmt.Println("count Service task 7 ...")
 	CountServiceTask7(client, participants)
 }
 

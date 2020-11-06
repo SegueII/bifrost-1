@@ -2,6 +2,7 @@ package count
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 
 	sdk "github.com/irisnet/irishub-sdk-go"
@@ -12,6 +13,7 @@ import (
 )
 
 func CountRecordTasks(client sdk.IRISHUBClient, participants []*biftypes.Participant) {
+	fmt.Println("count Record task 1 ...")
 	CountRecordTask1(client, participants)
 }
 
@@ -46,7 +48,7 @@ func CountRecordTask1(client sdk.IRISHUBClient, participants []*biftypes.Partici
 				panic(err)
 			}
 
-			if resp.Record.Contents[0].Digest == feed.FeedValues[participant.Serial].Data {
+			if resp.Record.Contents[0].Digest == feed.FeedValues[participant.Serial-1].Data {
 				participant.Tasks[7] = true
 			}
 		}

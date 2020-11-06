@@ -23,10 +23,10 @@ func main() {
 
 	participants := getParticipants()
 
-	// count.CountServiceTasks(client, participants)
+	count.CountServiceTasks(client, participants)
 	count.CountRecordTasks(client, participants)
-	// count.CountNFTTasks(client, participants)
-	// count.CountRandomTasks(client, participants)
+	count.CountNFTTasks(client, participants)
+	count.CountRandomTasks(client, participants)
 
 	bz, _ := json.MarshalIndent(participants, "", "    ")
 	if err := ioutil.WriteFile("result.json", bz, 0666); err != nil {

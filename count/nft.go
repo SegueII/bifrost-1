@@ -10,9 +10,13 @@ import (
 )
 
 func CountNFTTasks(client sdk.IRISHUBClient, participants []*biftypes.Participant) {
+	fmt.Println("count NFT task 1 ...")
 	CountNFTTask1(client, participants)
+	fmt.Println("count NFT task 2 ...")
 	CountNFTTask2(client, participants)
+	fmt.Println("count NFT task 3 ...")
 	CountNFTTask3(client, participants)
+	fmt.Println("count NFT task 4 and 5 ...")
 	CountNFTTask4And5(client, participants)
 }
 
