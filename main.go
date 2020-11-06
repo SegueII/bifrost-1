@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 
 	sdk "github.com/irisnet/irishub-sdk-go"
@@ -22,19 +21,15 @@ var (
 func main() {
 	client := initClient()
 
-	participants, err := getParticipants()
-	if err != nil {
-		fmt.Println(err.Error())
-		return
-	}
+	participants := getParticipants()
 
-	count.CountServiceTasks(client, participants)
-	// count.CountRecordTasks(client, participants)
-	count.CountNFTTasks(client, participants)
+	// count.CountServiceTasks(client, participants)
+	count.CountRecordTasks(client, participants)
+	// count.CountNFTTasks(client, participants)
 	// count.CountRandomTasks(client, participants)
 
 	bz, _ := json.MarshalIndent(participants, "", "    ")
-	if err = ioutil.WriteFile("result.json", bz, 0666); err != nil {
+	if err := ioutil.WriteFile("result.json", bz, 0666); err != nil {
 		panic(err)
 	}
 }
@@ -53,16 +48,16 @@ func initClient() sdk.IRISHUBClient {
 	return sdk.NewIRISHUBClient(cfg)
 }
 
-func getParticipants() ([]*biftypes.Participant, error) {
+func getParticipants() []*biftypes.Participant {
 	bytes, err := ioutil.ReadFile("participants.json")
 	if err != nil {
-		return nil, err
+		panic(err)
 	}
 
 	var participants []*biftypes.Participant
 	if err := json.Unmarshal(bytes, &participants); err != nil {
-		return nil, err
+		panic(err)
 	}
 
-	return participants, nil
+	return participants
 }
