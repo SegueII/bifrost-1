@@ -2,6 +2,7 @@ package count
 
 import (
 	"fmt"
+	"strings"
 
 	sdk "github.com/irisnet/irishub-sdk-go"
 	types "github.com/irisnet/irishub-sdk-go/types"
@@ -72,15 +73,11 @@ func CountNFTTask3(client sdk.IRISHUBClient, participants []*biftypes.Participan
 		}
 
 		for _, tx := range txs.Txs {
-			denom, err := tx.Result.Events.GetValue("edit_nft", "denom")
-			if err != nil {
-				panic(err)
-			}
 			uri, err := tx.Result.Events.GetValue("edit_nft", "token-uri")
 			if err != nil {
 				panic(err)
 			}
-			if uri == fmt.Sprintf("bifrost-%s", denom) {
+			if strings.HasPrefix(uri, "bifrost-") {
 				participant.Tasks[10] = true
 			}
 		}
